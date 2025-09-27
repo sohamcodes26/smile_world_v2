@@ -111,41 +111,63 @@ export default function WomenFocused() {
               {
                 icon: "🛡️",
                 title: "Enhanced Safety",
-                description: "Women-only groups, female guides, and carefully vetted accommodations ensure your security throughout the journey."
+                description: "Women-only groups, female guides, and carefully vetted accommodations ensure your security throughout the journey.",
+                decoration: "💪"
               },
               {
-                icon: "👭",
+                icon: "👭", 
                 title: "Sisterhood Bonds",
-                description: "Connect with amazing women from diverse backgrounds and create lifelong friendships that extend beyond travel."
+                description: "Connect with amazing women from diverse backgrounds and create lifelong friendships that extend beyond travel.",
+                decoration: "💕"
               },
               {
                 icon: "🦋",
                 title: "Personal Growth",
-                description: "Step out of your comfort zone in a supportive environment that encourages confidence and self-discovery."
+                description: "Step out of your comfort zone in a supportive environment that encourages confidence and self-discovery.",
+                decoration: "🌸"
               },
               {
                 icon: "🌟",
-                title: "Authentic Experiences",
-                description: "Access unique cultural experiences and perspectives that are often more open to women-only groups."
+                title: "Authentic Experiences", 
+                description: "Access unique cultural experiences and perspectives that are often more open to women-only groups.",
+                decoration: "✨"
               }
             ].map((benefit, index) => (
               <motion.div
                 key={index}
-                className="cloud-card p-6 text-center group hover:scale-105 transition-all duration-300"
+                className="info-card group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <div className="text-5xl mb-4 group-hover:animate-bounce-gentle">
-                  {benefit.icon}
+                {/* Whimsical floating decoration */}
+                <div className="decorative-element -top-2 -right-2 text-xl" 
+                     style={{ 
+                       animationDelay: `${index * 0.5}s`,
+                       filter: 'hue-rotate(320deg) saturate(1.5)'
+                     }}>
+                  {benefit.decoration}
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {benefit.description}
-                </p>
+                
+                <div className="flex flex-col h-full">
+                  <div className="info-card-icon whimsical-hover text-5xl" 
+                       style={{ filter: 'hue-rotate(320deg) saturate(1.2)' }}>
+                    {benefit.icon}
+                  </div>
+                  <h3 className="info-card-title text-xl" 
+                      style={{ color: 'hsl(var(--pink-primary))' }}>
+                    {benefit.title}
+                  </h3>
+                  <div className="info-card-description flex-grow">
+                    <p className="text-sm leading-relaxed">{benefit.description}</p>
+                  </div>
+                </div>
+                
+                {/* Pink-themed glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-4 bg-gradient-to-r from-pink-primary/10 to-pink-secondary/10 rounded-2xl blur-xl"></div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -233,36 +255,67 @@ export default function WomenFocused() {
                 icon: Users,
                 title: "Female-Only Groups",
                 description: "Travel exclusively with other women in small, carefully curated groups of 8-12 participants.",
-                color: "text-pink-primary"
+                color: "text-pink-primary",
+                emoji: "👭",
+                decoration: "💕"
               },
               {
                 icon: Shield,
-                title: "Vetted Accommodations",
+                title: "Vetted Accommodations", 
                 description: "Women-friendly hotels and resorts with enhanced security measures and female staff availability.",
-                color: "text-pink-primary"
+                color: "text-pink-primary",
+                emoji: "🏨",
+                decoration: "🛡️"
               },
               {
                 icon: Star,
                 title: "24/7 Support",
                 description: "Round-the-clock support hotline staffed by women who understand the unique needs of female travelers.",
-                color: "text-pink-primary"
+                color: "text-pink-primary", 
+                emoji: "📞",
+                decoration: "🌙"
               }
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                className="cloud-card p-8 text-center group hover:scale-105 transition-all duration-300"
+                className="info-card group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <feature.icon className={`w-16 h-16 mx-auto mb-6 ${feature.color} group-hover:animate-bounce-gentle`} />
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+                {/* Whimsical floating decoration */}
+                <div className="decorative-element -top-3 -right-3 text-2xl"
+                     style={{ 
+                       animationDelay: `${index * 0.7}s`,
+                       filter: 'hue-rotate(320deg) saturate(1.5)'
+                     }}>
+                  {feature.decoration}
+                </div>
+                
+                <div className="flex flex-col h-full">
+                  <div className="flex justify-center mb-6">
+                    <div className="relative">
+                      <feature.icon className={`w-16 h-16 ${feature.color} group-hover:animate-bounce-gentle whimsical-hover`} />
+                      <div className="absolute -top-2 -right-2 text-2xl" 
+                           style={{ filter: 'hue-rotate(320deg) saturate(1.2)' }}>
+                        {feature.emoji}
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="info-card-title text-xl" 
+                      style={{ color: 'hsl(var(--pink-primary))' }}>
+                    {feature.title}
+                  </h3>
+                  <div className="info-card-description flex-grow">
+                    <p className="leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+                
+                {/* Pink-themed glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-4 bg-gradient-to-r from-pink-primary/10 to-pink-secondary/10 rounded-2xl blur-xl"></div>
+                </div>
               </motion.div>
             ))}
           </div>

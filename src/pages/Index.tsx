@@ -146,7 +146,7 @@ export default function Index() {
               },
               {
                 icon: "👥",
-                title: "Expert Guides",
+                title: "Expert Guides", 
                 description: "Local, experienced guides who know the hidden gems and cultural secrets of each destination, making your trip truly authentic."
               },
               {
@@ -157,21 +157,31 @@ export default function Index() {
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                className="cloud-card p-8 text-center group hover:scale-105 transition-all duration-300"
+                className="info-card group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <div className="text-6xl mb-6 group-hover:animate-bounce-gentle">
+                {/* Whimsical floating decoration */}
+                <div className="decorative-element -top-4 -right-4 text-2xl opacity-10">
+                  ✨
+                </div>
+                
+                <div className="info-card-icon whimsical-hover">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">
+                <h3 className="info-card-title">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+                <div className="info-card-description">
+                  <p>{feature.description}</p>
+                </div>
+                
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-4 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl blur-xl"></div>
+                </div>
               </motion.div>
             ))}
           </div>

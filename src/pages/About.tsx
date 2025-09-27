@@ -94,54 +94,72 @@ export default function About() {
                 icon: Shield,
                 title: "Safety First",
                 description: "Your security and well-being are our top priority in every destination we visit.",
-                color: "text-primary"
+                color: "text-primary",
+                emoji: "🛡️"
               },
               {
                 icon: Heart,
-                title: "Authentic Experiences",
+                title: "Authentic Experiences", 
                 description: "We focus on genuine cultural connections and meaningful travel experiences.",
-                color: "text-secondary"
+                color: "text-secondary",
+                emoji: "💝"
               },
               {
                 icon: Users,
                 title: "Inclusive Travel",
                 description: "Creating welcoming spaces for travelers of all backgrounds and comfort levels.",
-                color: "text-accent"
+                color: "text-accent",
+                emoji: "🤝"
               },
               {
                 icon: Star,
                 title: "Excellence",
                 description: "Committed to delivering exceptional service and unforgettable memories.",
-                color: "text-primary"
+                color: "text-primary",
+                emoji: "⭐"
               },
               {
                 icon: MapPin,
                 title: "Sustainable Tourism",
                 description: "Supporting local communities while preserving the beauty of our destinations.",
-                color: "text-nature"
+                color: "text-nature",
+                emoji: "🌱"
               },
               {
                 icon: Award,
                 title: "Trust & Transparency",
                 description: "Honest pricing, clear communication, and reliable service you can depend on.",
-                color: "text-adventure"
+                color: "text-adventure",
+                emoji: "🏆"
               }
             ].map((value, index) => (
               <motion.div
                 key={index}
-                className="cloud-card p-6 text-center group hover:scale-105 transition-all duration-300"
+                className="info-card group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <value.icon className={`w-12 h-12 mx-auto mb-4 ${value.color} group-hover:animate-bounce-gentle`} />
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {value.description}
-                </p>
+                {/* Whimsical floating decoration */}
+                <div className="decorative-element -top-2 -right-2 text-xl">
+                  {value.emoji}
+                </div>
+                
+                <div className="flex flex-col h-full">
+                  <value.icon className={`w-16 h-16 mx-auto mb-6 ${value.color} group-hover:animate-bounce-gentle whimsical-hover`} />
+                  <h3 className="info-card-title text-xl">
+                    {value.title}
+                  </h3>
+                  <div className="info-card-description flex-grow">
+                    <p>{value.description}</p>
+                  </div>
+                </div>
+                
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-4 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl blur-xl"></div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -171,41 +189,56 @@ export default function About() {
                 name: "Sarah Adventure",
                 role: "Founder & Lead Explorer",
                 emoji: "🧭",
-                description: "15+ years of travel experience across 40+ countries. Specializes in adventure and cultural tours."
+                description: "15+ years of travel experience across 40+ countries. Specializes in adventure and cultural tours.",
+                decoration: "✈️"
               },
               {
-                name: "Maya Wanderer",
+                name: "Maya Wanderer", 
                 role: "Women's Travel Specialist",
                 emoji: "🌸",
-                description: "Expert in women-only travel programs and safety protocols. Passionate about empowering female travelers."
+                description: "Expert in women-only travel programs and safety protocols. Passionate about empowering female travelers.",
+                decoration: "💕"
               },
               {
                 name: "Arjun Guide",
-                role: "Cultural Experience Director",
+                role: "Cultural Experience Director", 
                 emoji: "🎭",
-                description: "Local heritage expert with deep knowledge of Indian culture, traditions, and hidden gems."
+                description: "Local heritage expert with deep knowledge of Indian culture, traditions, and hidden gems.",
+                decoration: "🏛️"
               }
             ].map((member, index) => (
               <motion.div
                 key={index}
-                className="cloud-card p-6 text-center group hover:scale-105 transition-all duration-300"
+                className="info-card group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <div className="text-6xl mb-4 group-hover:animate-bounce-gentle">
-                  {member.emoji}
+                {/* Whimsical floating decoration */}
+                <div className="decorative-element -top-3 -right-3 text-2xl">
+                  {member.decoration}
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-primary font-medium mb-3">
-                  {member.role}
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  {member.description}
-                </p>
+                
+                <div className="flex flex-col h-full">
+                  <div className="info-card-icon whimsical-hover">
+                    {member.emoji}
+                  </div>
+                  <h3 className="info-card-title text-xl">
+                    {member.name}
+                  </h3>
+                  <p className="text-primary font-medium mb-4 text-sm">
+                    {member.role}
+                  </p>
+                  <div className="info-card-description flex-grow">
+                    <p className="text-xs">{member.description}</p>
+                  </div>
+                </div>
+                
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-4 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl blur-xl"></div>
+                </div>
               </motion.div>
             ))}
           </div>

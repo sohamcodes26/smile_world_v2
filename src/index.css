@@ -150,34 +150,97 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Cloud-like elements */
+  /* Whimsical Cloud Cards */
   .cloud-card {
     @apply bg-card/90 backdrop-blur-sm rounded-3xl;
     box-shadow: var(--shadow-card);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  
+  .cloud-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+      hsl(var(--primary)/0.3) 0%, 
+      hsl(var(--secondary)/0.2) 50%, 
+      hsl(var(--accent)/0.3) 100%
+    );
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+  }
+  
+  /* Consistent Info Cards */
+  .info-card {
+    @apply cloud-card p-8 text-center hover:scale-105 transition-all duration-500;
+    @apply min-h-[280px] flex flex-col justify-between;
+    @apply hover:shadow-floating hover:-translate-y-3;
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--card)/0.8) 100%
+    );
+  }
+  
+  .info-card-icon {
+    @apply text-6xl mb-6 group-hover:animate-bounce-gentle;
+    @apply drop-shadow-lg filter;
+    text-shadow: 2px 2px 4px hsla(var(--primary), 0.2);
+  }
+  
+  .info-card-title {
+    @apply text-2xl font-bold text-foreground mb-4;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text;
+  }
+  
+  .info-card-description {
+    @apply text-muted-foreground leading-relaxed text-sm;
+    @apply flex-grow flex items-center;
   }
   
   /* Floating elements */
   .float-element {
     animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px hsla(var(--primary), 0.2));
   }
   
-  /* Button variants */
+  /* Enhanced Button variants */
   .btn-travel {
     @apply bg-primary text-primary-foreground hover:bg-primary/90;
     @apply rounded-full px-6 py-3 font-medium transition-all duration-300;
     @apply shadow-lg hover:shadow-xl hover:scale-105;
+    background: linear-gradient(135deg, 
+      hsl(var(--primary)) 0%, 
+      hsl(var(--primary)/0.8) 100%
+    );
   }
   
   .btn-adventure {
     background: var(--gradient-sunset);
     @apply text-white rounded-full px-6 py-3 font-medium;
     @apply transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
+    @apply border-2 border-white/20;
   }
   
-  /* Package card styles */
+  /* Enhanced Package card styles */
   .package-card {
-    @apply cloud-card p-6 hover:shadow-2xl transition-all duration-500;
-    @apply hover:scale-105 hover:-translate-y-2;
+    @apply cloud-card p-6 hover:shadow-floating transition-all duration-500;
+    @apply hover:scale-105 hover:-translate-y-3;
+    @apply min-h-[600px] flex flex-col;
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--card)/0.95) 100%
+    );
+  }
+  
+  /* Whimsical decorative elements */
+  .decorative-element {
+    @apply absolute opacity-20 pointer-events-none;
+    animation: float 8s ease-in-out infinite;
   }
   
   /* Blur overlay for hidden content */
@@ -187,13 +250,24 @@ All colors MUST be HSL.
   
   .content-blur::after {
     content: '';
-    @apply absolute inset-0 backdrop-blur-sm bg-white/40 rounded-xl;
+    @apply absolute inset-0 backdrop-blur-sm rounded-xl;
     @apply flex items-center justify-center;
+    background: linear-gradient(135deg, 
+      hsl(var(--background)/0.8) 0%, 
+      hsl(var(--primary)/0.1) 100%
+    );
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 3rem;
     color: hsl(var(--primary));
+    border: 2px dashed hsl(var(--primary)/0.3);
+  }
+  
+  /* Whimsical hover effects for interactive elements */
+  .whimsical-hover {
+    @apply transition-all duration-300 hover:scale-110;
+    @apply hover:rotate-3 hover:drop-shadow-xl;
   }
 }
 
