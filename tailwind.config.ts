@@ -47,16 +47,29 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        // Travel theme colors
+        adventure: "hsl(var(--adventure))",
+        nature: "hsl(var(--nature))",
+        culture: "hsl(var(--culture))",
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
+        // Pink theme for women-focused sections
+        pink: {
+          primary: "hsl(var(--pink-primary))",
+          secondary: "hsl(var(--pink-secondary))",
+          accent: "hsl(var(--pink-accent))",
         },
+      },
+      backgroundImage: {
+        'gradient-sky': 'var(--gradient-sky)',
+        'gradient-earth': 'var(--gradient-earth)',
+        'gradient-sunset': 'var(--gradient-sunset)',
+        'gradient-pink': 'var(--gradient-pink)',
+      },
+      boxShadow: {
+        'soft': 'var(--shadow-soft)',
+        'card': 'var(--shadow-card)',
+        'floating': 'var(--shadow-floating)',
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,0 +1,146 @@
+import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { MapPin, Heart, Users, Mail, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+
+const navigation = [
+  { name: "Home", href: "/", icon: MapPin },
+  { name: "About", href: "/about", icon: Users },
+  { name: "Customize", href: "/customize", icon: Heart },
+  { name: "Women Travel", href: "/women", icon: Heart },
+  { name: "Contact", href: "/contact", icon: Mail },
+];
+
+interface LayoutProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function Layout({ children, className = "" }: LayoutProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  
+  const isWomenPage = location.pathname === "/women";
+
+  return (
+    <div className={`min-h-screen ${isWomenPage ? "pink-theme" : ""} ${className}`}>
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 cloud-card border-b backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="text-2xl font-bold text-primary"
+              >
+                🌍 Smiles World
+              </motion.div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {navigation.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.href;
+                  
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={`flex items-center space-x-1 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                        isActive
+                          ? "bg-primary text-primary-foreground shadow-md"
+                          : "text-foreground hover:bg-primary/10 hover:text-primary"
+                      }`}
+                    >
+                      <Icon size={16} />
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-foreground"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="md:hidden pb-4 pt-2"
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navigation.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.href;
+                  
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-full text-base font-medium transition-all duration-300 ${
+                        isActive
+                          ? "bg-primary text-primary-foreground"
+                          : "text-foreground hover:bg-primary/10 hover:text-primary"
+                      }`}
+                    >
+                      <Icon size={18} />
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="pt-16">
+        {children}
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-card/80 backdrop-blur-sm border-t mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center space-y-4">
+            <div className="text-3xl font-bold text-primary">🌍 Smiles World</div>
+            <p className="text-muted-foreground text-lg">
+              Explore more. Smile wider.
+            </p>
+            <div className="flex justify-center space-x-6 text-muted-foreground">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="border-t pt-8 text-sm text-muted-foreground">
+              © 2024 Smiles World. Made with ❤️ for travelers worldwide.
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
