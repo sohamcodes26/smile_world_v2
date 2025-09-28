@@ -250,7 +250,7 @@ All colors MUST be HSL.
   
   .content-blur::after {
     content: '';
-    @apply absolute inset-0 backdrop-blur-sm rounded-xl;
+    @apply absolute inset-0 backdrop-blur-sm rounded-xl pointer-events-none;
     @apply flex items-center justify-center;
     background: linear-gradient(135deg, 
       hsl(var(--background)/0.8) 0%, 
