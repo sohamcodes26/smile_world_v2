@@ -79,17 +79,15 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
                     </p>
                   )}
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <div 
                   onClick={(e) => {
                     e.stopPropagation();
                     onClose();
                   }}
-                  type="button"
+                  className="flex items-center justify-center w-8 h-8 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
                 >
                   <X size={20} />
-                </Button>
+                </div>
               </div>
 
               {/* Form */}

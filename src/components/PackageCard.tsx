@@ -100,18 +100,19 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h4 className="font-semibold text-foreground">Full Itinerary & Details</h4>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsContentVisible(!isContentVisible)}
-                className="text-primary"
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsContentVisible(!isContentVisible);
+                }}
+                className="flex items-center justify-center px-3 py-1.5 rounded-md text-primary hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
               >
                 {isContentVisible ? <EyeOff size={16} /> : <Eye size={16} />}
-              </Button>
+              </div>
             </div>
 
-            <div className={`space-y-3 transition-all duration-300 ${
-              !isContentVisible ? "content-blur cursor-pointer" : ""
+            <div className={`space-y-3 transition-all duration-300 relative ${
+              !isContentVisible ? "cursor-pointer" : ""
             }`} onClick={() => !isContentVisible && setShowInquiry(true)}>
               {/* Timeline */}
               <div className="space-y-2">
@@ -154,18 +155,28 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
                   ))}
                 </ul>
               </div>
+              
+              {!isContentVisible && (
+                <div className={`absolute inset-0 backdrop-blur-sm rounded-xl pointer-events-none flex items-center justify-center ${
+                  !isContentVisible ? "content-blur" : ""
+                }`}></div>
+              )}
             </div>
 
             {!isContentVisible && (
-              <Button
+              <div
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowInquiry(true);
                 }}
-                className={`w-full ${showPinkTheme ? "bg-pink-primary hover:bg-pink-primary/90" : ""}`}
+                className={`w-full px-4 py-2 rounded-md text-sm font-medium text-center cursor-pointer transition-colors ${
+                  showPinkTheme 
+                    ? "bg-pink-primary hover:bg-pink-primary/90 text-white" 
+                    : "bg-primary hover:bg-primary/90 text-primary-foreground"
+                }`}
               >
                 Request Full Details
-              </Button>
+              </div>
             )}
           </div>
         </div>

@@ -27,7 +27,7 @@ export function Layout({ children, className = "" }: LayoutProps) {
   return (
     <div className={`min-h-screen ${isWomenPage ? "pink-theme" : ""} ${className}`}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 cloud-card border-b backdrop-blur-md">
+      <nav className="fixed top-0 w-full z-[100] cloud-card border-b backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -68,14 +68,12 @@ export function Layout({ children, className = "" }: LayoutProps) {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
+              <div
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-foreground"
+                className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </Button>
+              </div>
             </div>
           </div>
 
