@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { MapPin, Heart, Users, Mail, Menu, X } from "lucide-react";
+import { Home, Info, Palette, Heart, Mail, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.ico";
 
 const navigation = [
-  { name: "Home", href: "/", icon: MapPin },
-  { name: "About", href: "/about", icon: Users },
-  { name: "Customize", href: "/customize", icon: Heart },
+  { name: "Home", href: "/", icon: Home },
+  { name: "About", href: "/about", icon: Info },
+  { name: "Customize", href: "/customize", icon: Palette },
   { name: "Women Travel", href: "/women", icon: Heart },
   { name: "Contact", href: "/contact", icon: Mail },
 ];
@@ -33,9 +34,10 @@ export function Layout({ children, className = "" }: LayoutProps) {
             <Link to="/" className="flex items-center space-x-2">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-primary"
+                className="flex items-center space-x-2"
               >
-                🌍 Smiles World
+                <img src={logo} alt="Smiles World Logo" className="w-8 h-8" />
+                <span className="text-2xl font-bold text-primary">Smiles World</span>
               </motion.div>
             </Link>
 
@@ -120,7 +122,10 @@ export function Layout({ children, className = "" }: LayoutProps) {
       <footer className="bg-card/80 backdrop-blur-sm border-t mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center space-y-4">
-            <div className="text-3xl font-bold text-primary">🌍 Smiles World</div>
+            <div className="flex items-center justify-center space-x-2">
+              <img src={logo} alt="Smiles World Logo" className="w-10 h-10" />
+              <span className="text-3xl font-bold text-primary">Smiles World</span>
+            </div>
             <p className="text-muted-foreground text-lg">
               Explore more. Smile wider.
             </p>

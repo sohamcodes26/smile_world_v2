@@ -79,7 +79,15 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
                     </p>
                   )}
                 </div>
-                <Button variant="ghost" size="sm" onClick={onClose}>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClose();
+                  }}
+                  type="button"
+                >
                   <X size={20} />
                 </Button>
               </div>

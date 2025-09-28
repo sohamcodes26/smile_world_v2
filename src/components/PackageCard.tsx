@@ -158,7 +158,10 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
 
             {!isContentVisible && (
               <Button
-                onClick={() => setShowInquiry(true)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowInquiry(true);
+                }}
                 className={`w-full ${showPinkTheme ? "bg-pink-primary hover:bg-pink-primary/90" : ""}`}
               >
                 Request Full Details
