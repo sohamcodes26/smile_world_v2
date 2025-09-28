@@ -100,15 +100,16 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h4 className="font-semibold text-foreground">Full Itinerary & Details</h4>
-              <div
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsContentVisible(!isContentVisible);
                 }}
-                className="flex items-center justify-center px-3 py-1.5 rounded-md text-primary hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
+                className="flex items-center justify-center px-3 py-1.5 rounded-md text-primary hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors z-10 relative"
+                type="button"
               >
                 {isContentVisible ? <EyeOff size={16} /> : <Eye size={16} />}
-              </div>
+              </button>
             </div>
 
             <div className={`space-y-3 transition-all duration-300 relative ${
@@ -164,19 +165,20 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
             </div>
 
             {!isContentVisible && (
-              <div
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowInquiry(true);
                 }}
-                className={`w-full px-4 py-2 rounded-md text-sm font-medium text-center cursor-pointer transition-colors ${
+                className={`w-full px-4 py-2 rounded-md text-sm font-medium text-center cursor-pointer transition-colors z-10 relative ${
                   showPinkTheme 
                     ? "bg-pink-primary hover:bg-pink-primary/90 text-white" 
                     : "bg-primary hover:bg-primary/90 text-primary-foreground"
                 }`}
+                type="button"
               >
                 Request Full Details
-              </div>
+              </button>
             )}
           </div>
         </div>

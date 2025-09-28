@@ -68,12 +68,13 @@ export function Layout({ children, className = "" }: LayoutProps) {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <div
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
+                className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors z-50 relative"
+                type="button"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </div>
+              </button>
             </div>
           </div>
 

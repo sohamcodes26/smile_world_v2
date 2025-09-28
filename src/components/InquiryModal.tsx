@@ -79,15 +79,16 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
                     </p>
                   )}
                 </div>
-                <div 
+                <button 
                   onClick={(e) => {
                     e.stopPropagation();
                     onClose();
                   }}
                   className="flex items-center justify-center w-8 h-8 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
+                  type="button"
                 >
                   <X size={20} />
-                </div>
+                </button>
               </div>
 
               {/* Form */}
@@ -164,7 +165,7 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full rounded-xl ${showPinkTheme ? "bg-pink-primary hover:bg-pink-primary/90" : ""}`}
+                  className={`w-full rounded-xl z-10 relative ${showPinkTheme ? "bg-pink-primary hover:bg-pink-primary/90" : ""}`}
                 >
                   {isSubmitting ? (
                     <motion.div
