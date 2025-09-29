@@ -125,7 +125,7 @@ export default function WomenFocused() {
           >
             <div className="space-y-4">
               <motion.h1 
-                className="text-5xl md:text-7xl font-bold text-foreground"
+                className="text-2xl sm:text-4xl md:text-7xl font-bold text-foreground"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
@@ -134,7 +134,7 @@ export default function WomenFocused() {
               </motion.h1>
               
               <motion.p 
-                className="text-2xl md:text-4xl text-foreground/80 font-light"
+                className="text-base sm:text-xl md:text-4xl text-foreground/80 font-light"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -144,7 +144,7 @@ export default function WomenFocused() {
             </div>
             
             <motion.p 
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+              className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -156,14 +156,14 @@ export default function WomenFocused() {
             
             {/* Package Type Selection */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-6 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
               <Button 
                 onClick={() => setSelectedType('domestic')}
-                className={`rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ${
+                className={`w-full sm:w-auto rounded-full px-6 sm:px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ${
                   selectedType === 'domestic' 
                     ? 'bg-pink-primary hover:bg-pink-primary/90 text-white' 
                     : 'bg-white/90 text-pink-primary hover:bg-pink-primary hover:text-white'
@@ -174,7 +174,7 @@ export default function WomenFocused() {
               </Button>
               <Button 
                 onClick={() => setSelectedType('international')}
-                className={`rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ${
+                className={`w-full sm:w-auto rounded-full px-6 sm:px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ${
                   selectedType === 'international' 
                     ? 'bg-pink-primary hover:bg-pink-primary/90 text-white' 
                     : 'bg-white/90 text-pink-primary hover:bg-pink-primary hover:text-white'
@@ -186,12 +186,12 @@ export default function WomenFocused() {
             </motion.div>
             
             <motion.div 
-              className="flex justify-center pt-4"
+              className="flex justify-center pt-4 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <Button asChild variant="outline" className="rounded-full px-8 py-3 border-pink-primary text-pink-primary hover:bg-pink-primary hover:text-white">
+              <Button asChild variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-3 border-pink-primary text-pink-primary hover:bg-pink-primary hover:text-white">
                 <Link to="/customize">
                   <Sparkles className="mr-2" size={18} />
                   Customize My Journey
@@ -214,10 +214,10 @@ export default function WomenFocused() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
               {selectedType === 'domestic' ? 'Domestic Women Tours' : 'International Women Tours'}
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
               {selectedType === 'domestic' 
                 ? 'Explore India safely with fellow women travelers' 
                 : 'International adventures designed for women\'s safety and comfort'}
@@ -269,10 +269,10 @@ export default function WomenFocused() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-4">
               Why Choose Women-Only Travel?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Experience the freedom, safety, and empowerment that comes with traveling 
               in a supportive community of like-minded women.
             </p>

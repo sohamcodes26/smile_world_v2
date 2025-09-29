@@ -124,18 +124,18 @@ export function Layout({ children, className = "" }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center space-x-2">
-              <img src={logo} alt="Smiles World Logo" className="w-10 h-10" />
-              <span className="text-3xl font-bold text-primary">Smiles World</span>
+              <img src={logo} alt="Smiles World Logo" className="w-8 sm:w-10 h-8 sm:h-10" />
+              <span className="text-2xl sm:text-3xl font-bold text-primary">Smiles World</span>
             </div>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base sm:text-lg px-4">
               Explore more. Smile wider.
             </p>
-            <div className="flex justify-center space-x-6 text-muted-foreground">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-muted-foreground px-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors text-sm sm:text-base"
                 >
                   {item.name}
                 </Link>

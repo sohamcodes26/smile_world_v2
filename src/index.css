@@ -304,4 +304,34 @@ All colors MUST be HSL.
   .animate-fade-in-up {
     animation: fade-in-up 0.6s ease-out forwards;
   }
+
+  /* Mobile Optimizations */
+  @media (max-width: 640px) {
+    /* Ensure proper touch targets */
+    button, a {
+      min-height: 44px;
+    }
+    
+    /* Improve text readability on mobile */
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+    
+    /* Better spacing for mobile */
+    .package-card {
+      margin-bottom: 1rem;
+    }
+    
+    /* Improve mobile navigation */
+    nav {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Better mobile hero sections */
+    section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
 }

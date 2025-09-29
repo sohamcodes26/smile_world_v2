@@ -21,20 +21,20 @@ export default function GroupDeparture() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-8"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-foreground">
               Group Departures
             </h1>
-            <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
+            <p className="text-sm sm:text-base md:text-2xl text-muted-foreground max-w-4xl mx-auto px-4">
               Join fellow travelers on our carefully curated group tours. 
               Make new friends while exploring incredible destinations together!
             </p>
             
             {/* Package Type Selection */}
-            <div className="flex justify-center space-x-4 mt-8">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-8 px-4">
               <Button 
                 size="lg" 
                 onClick={() => setSelectedType('domestic')}
-                className={`transition-all duration-300 ${
+                className={`w-full sm:w-auto transition-all duration-300 ${
                   selectedType === 'domestic' 
                     ? 'btn-travel' 
                     : 'bg-white/90 text-primary hover:bg-primary hover:text-primary-foreground'
@@ -46,7 +46,7 @@ export default function GroupDeparture() {
               <Button 
                 size="lg" 
                 onClick={() => setSelectedType('international')}
-                className={`transition-all duration-300 ${
+                className={`w-full sm:w-auto transition-all duration-300 ${
                   selectedType === 'international' 
                     ? 'btn-travel' 
                     : 'bg-white/90 text-primary hover:bg-primary hover:text-primary-foreground'
@@ -69,10 +69,10 @@ export default function GroupDeparture() {
             transition={{ delay: 0.2 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
               {selectedType === 'domestic' ? 'Domestic Group Tours' : 'International Group Tours'}
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
               {selectedType === 'domestic' 
                 ? 'Explore India together with fellow travelers' 
                 : 'International adventures with group support and guidance'}
@@ -123,7 +123,7 @@ export default function GroupDeparture() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
               Why Choose Group Travel?
             </h2>
           </motion.div>
