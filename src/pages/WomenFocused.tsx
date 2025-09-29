@@ -125,7 +125,7 @@ export default function WomenFocused() {
           >
             <div className="space-y-4">
               <motion.h1 
-                className="text-2xl sm:text-4xl md:text-7xl font-bold text-foreground"
+                className="text-3xl sm:text-5xl md:text-7xl font-bold text-foreground"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}

@@ -14,7 +14,7 @@ export default function About() {
             className="space-y-8"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-              About Smiles World 🌍
+              About Smiles World
             </h1>
             <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
               We believe travel is more than just visiting places – it's about creating 

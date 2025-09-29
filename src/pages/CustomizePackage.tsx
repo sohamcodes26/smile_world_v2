@@ -60,7 +60,7 @@ export default function CustomizePackage() {
             className="space-y-8"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-              ✨ Customize Your Dream Trip
+              Customize Your Dream Trip
             </h1>
             <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
               Tell us about your travel dreams and we'll craft the perfect journey just for you. 

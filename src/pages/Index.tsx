@@ -37,7 +37,7 @@ export default function Index() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                🌍 Smiles World
+                Smiles World
               </motion.h1>
               
               <motion.p 
@@ -198,7 +198,7 @@ export default function Index() {
             className="cloud-card p-12"
           >
             <h2 className="text-4xl font-bold text-foreground mb-6">
-              Ready for Your Next Adventure? 🚀
+              Ready for Your Next Adventure?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Let us craft the perfect journey just for you. Share your travel dreams and we'll make them reality.

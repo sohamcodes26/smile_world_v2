@@ -21,7 +21,7 @@ export default function GroupDeparture() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-8"
           >
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-foreground">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-foreground">
               Group Departures
             </h1>
             <p className="text-sm sm:text-base md:text-2xl text-muted-foreground max-w-4xl mx-auto px-4">
