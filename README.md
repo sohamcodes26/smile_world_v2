@@ -1,73 +1,133 @@
-# Welcome to your Lovable project
+# Smiles World - Travel Agency Website
 
-## Project info
+A modern, responsive travel agency website designed to showcase travel packages and provide an exceptional user experience for travel enthusiasts.
 
-**URL**: https://lovable.dev/projects/1164afaf-e7e2-42c8-8d28-7821b0261680
+## 🌟 Features
 
-## How can I edit this code?
+- **🌍 Travel Packages Showcase** - Beautiful display of curated travel destinations
+- **💖 Women-Focused Travel** - Specialized section for women travelers with safe and empowering experiences
+- **📱 Responsive Design** - Optimized for all devices and screen sizes
+- **🎨 Modern UI/UX** - Clean, intuitive interface with smooth animations
+- **📋 Inquiry System** - Easy-to-use contact forms for custom package requests
+- **🗺️ Interactive Destinations** - Engaging presentation of travel locations
+- **⚡ Fast Performance** - Built with modern web technologies for optimal speed
 
-There are several ways of editing your application.
+## 🚀 Getting Started
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1164afaf-e7e2-42c8-8d28-7821b0261680) and start prompting.
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
 
-**Use your preferred IDE**
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd craft-world-travels
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-Follow these steps:
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to view the website
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠️ Development
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Available Scripts
 
-# Step 3: Install the necessary dependencies.
-npm i
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build the project for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint for code quality checks
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # Base UI components (buttons, cards, etc.)
+│   ├── Layout.tsx      # Main layout wrapper
+│   ├── PackageCard.tsx # Travel package display component
+│   └── InquiryModal.tsx # Contact form modal
+├── pages/              # Application pages
+│   ├── Index.tsx       # Homepage
+│   ├── About.tsx       # About page
+│   ├── Contact.tsx     # Contact page
+│   ├── CustomizePackage.tsx # Package customization
+│   └── WomenFocused.tsx # Women travel section
+├── data/               # Static data and configurations
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── assets/             # Images and static assets
 ```
 
-**Edit a file directly in GitHub**
+## 🎨 Technologies Used
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Type-safe JavaScript for better development experience
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework for styling
+- **Framer Motion** - Smooth animations and transitions
+- **React Router** - Client-side routing
+- **Lucide Icons** - Beautiful, customizable icons
+- **shadcn/ui** - High-quality, accessible UI components
 
-**Use GitHub Codespaces**
+## 📦 Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Build for Production
 
-## What technologies are used for this project?
+```bash
+npm run build
+```
 
-This project is built with:
+This creates a `dist` folder with optimized production files.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Deployment Options
 
-## How can I deploy this project?
+- **Vercel** - Recommended for React applications
+- **Netlify** - Easy deployment with continuous integration
+- **GitHub Pages** - Free hosting for static sites
+- **Traditional Web Hosting** - Upload the `dist` folder contents
 
-Simply open [Lovable](https://lovable.dev/projects/1164afaf-e7e2-42c8-8d28-7821b0261680) and click on Share -> Publish.
+## 🎯 Customization Guide
 
-## Can I connect a custom domain to my Lovable project?
+### Adding New Pages
 
-Yes, you can!
+1. Create a new file in `src/pages/`
+2. Add the route in `src/App.tsx`
+3. Update navigation in `src/components/Layout.tsx`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Modifying Travel Packages
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Edit `src/data/packages.ts` to update travel package information.
+
+### Styling Changes
+
+The project uses Tailwind CSS. Modify classes in components or update the theme in `tailwind.config.ts`.
+
+### Adding New Components
+
+1. Create component in `src/components/`
+2. Follow existing patterns for props and styling
+3. Export and import where needed
+
+## 📞 Support & Maintenance
+
+For technical support or customization requests, please contact the development team.
+
+## 📄 License
+
+This project is proprietary software developed for Smiles World Travel Agency.
+
+---
+
+**Built with ❤️ for amazing travel experiences**
