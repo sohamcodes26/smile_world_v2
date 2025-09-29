@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import CustomizePackage from "./pages/CustomizePackage";
 import WomenFocused from "./pages/WomenFocused";
+import GroupDeparture from "./pages/GroupDeparture";
+import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -22,7 +24,16 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/customize" element={<CustomizePackage />} />
+          
+          {/* Women Travel Route */}
           <Route path="/women" element={<WomenFocused />} />
+          
+          {/* Group Departure Route */}
+          <Route path="/group-departure" element={<GroupDeparture />} />
+          
+          {/* Blog Route */}
+          <Route path="/blog" element={<Blog />} />
+          
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

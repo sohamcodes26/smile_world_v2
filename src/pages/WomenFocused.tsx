@@ -2,12 +2,105 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { PackageCard } from "@/components/PackageCard";
 import { Button } from "@/components/ui/button";
-import { womenPackages } from "@/data/packages";
 import heroWomen from "@/assets/hero-women.jpg";
 import { Link } from "react-router-dom";
-import { Heart, Shield, Users, Star, MapPin, Sparkles } from "lucide-react";
+import { MapPin, Sparkles, Plane, Users, Shield, Star, Heart } from "lucide-react";
+import { useState } from "react";
+
+// Sample women travel packages data
+const womenTravelPackages = [
+  // Domestic packages
+  {
+    id: 'wd-1',
+    title: 'Rajasthan Queens Heritage Tour',
+    destination: 'Jaipur - Udaipur - Jodhpur',
+    duration: '7 Days 6 Nights',
+    price: '₹35,999',
+    image: '/placeholder.svg',
+    highlights: ['Women-only group', 'Female guides', 'Safe accommodations', 'Cultural workshops'],
+    rating: 4.9,
+    safety: 'Maximum Safety',
+    groupSize: '8-12 women',
+    type: 'domestic' as const,
+    includes: ['Accommodation', 'All meals', 'Transportation', 'Female guide']
+  },
+  {
+    id: 'wd-2',
+    title: 'Kerala Wellness Retreat',
+    destination: 'Munnar - Alleppey - Kochi',
+    duration: '6 Days 5 Nights',
+    price: '₹42,999',
+    image: '/placeholder.svg',
+    highlights: ['Ayurveda treatments', 'Yoga sessions', 'Cooking classes', 'Nature walks'],
+    rating: 4.8,
+    safety: 'Women-Friendly',
+    groupSize: '6-10 women',
+    type: 'domestic' as const,
+    includes: ['Resort stays', 'Spa treatments', 'All meals', 'Yoga sessions']
+  },
+  {
+    id: 'wd-3',
+    title: 'Himachal Adventure for Women',
+    destination: 'Manali - Dharamshala - Dalhousie',
+    duration: '8 Days 7 Nights',
+    price: '₹38,999',
+    image: '/placeholder.svg',
+    highlights: ['Mountain trekking', 'Adventure activities', 'Bonfire evenings', 'Photography workshops'],
+    rating: 4.7,
+    safety: 'Adventure Safe',
+    groupSize: '10-15 women',
+    type: 'domestic' as const,
+    includes: ['Mountain lodges', 'Adventure gear', 'All meals', 'Guide']
+  },
+  // International packages
+  {
+    id: 'wi-1',
+    title: 'Bali Sisterhood Retreat',
+    destination: 'Bali, Indonesia',
+    duration: '7 Days 6 Nights',
+    price: '₹95,999',
+    image: '/placeholder.svg',
+    highlights: ['Beach yoga sessions', 'Cultural immersion', 'Spa treatments', 'Female-only activities'],
+    rating: 4.9,
+    safety: 'Ultra Safe',
+    groupSize: '8-12 women',
+    type: 'international' as const,
+    includes: ['Flights', 'Visa support', 'Beach resorts', 'Spa treatments']
+  },
+  {
+    id: 'wi-2',
+    title: 'Dubai Ladies Special',
+    destination: 'Dubai, UAE',
+    duration: '5 Days 4 Nights',
+    price: '₹89,999',
+    image: '/placeholder.svg',
+    highlights: ['Ladies-only shopping tours', 'Desert safari', 'Luxury spa day', 'High tea experiences'],
+    rating: 4.8,
+    safety: 'Maximum Safety',
+    groupSize: '10-15 women',
+    type: 'international' as const,
+    includes: ['Flights', 'Luxury hotels', 'All meals', 'Shopping tours']
+  },
+  {
+    id: 'wi-3',
+    title: 'Thailand Girls Trip',
+    destination: 'Bangkok - Phuket',
+    duration: '8 Days 7 Nights',
+    price: '₹1,15,999',
+    image: '/placeholder.svg',
+    highlights: ['Island hopping', 'Thai cooking classes', 'Massage workshops', 'Beach relaxation'],
+    rating: 4.7,
+    safety: 'Women-Friendly',
+    groupSize: '12-18 women',
+    type: 'international' as const,
+    includes: ['Flights', 'Hotels', 'Island tours', 'Cooking classes']
+  }
+];
 
 export default function WomenFocused() {
+  const [selectedType, setSelectedType] = useState<'domestic' | 'international'>('domestic');
+  
+  const filteredPackages = womenTravelPackages.filter(pkg => pkg.type === selectedType);
   return (
     <Layout className="pink-theme">
       {/* Hero Section */}
@@ -37,7 +130,7 @@ export default function WomenFocused() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                🌸 Women's Safe Haven
+                Women's Safe Haven
               </motion.h1>
               
               <motion.p 
@@ -61,16 +154,43 @@ export default function WomenFocused() {
               with fellow female travelers.
             </motion.p>
             
+            {/* Package Type Selection */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <Button 
+                onClick={() => setSelectedType('domestic')}
+                className={`rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ${
+                  selectedType === 'domestic' 
+                    ? 'bg-pink-primary hover:bg-pink-primary/90 text-white' 
+                    : 'bg-white/90 text-pink-primary hover:bg-pink-primary hover:text-white'
+                }`}
+              >
+                <MapPin className="mr-2" size={18} />
+                Domestic Tours
+              </Button>
+              <Button 
+                onClick={() => setSelectedType('international')}
+                className={`rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ${
+                  selectedType === 'international' 
+                    ? 'bg-pink-primary hover:bg-pink-primary/90 text-white' 
+                    : 'bg-white/90 text-pink-primary hover:bg-pink-primary hover:text-white'
+                }`}
+              >
+                <Plane className="mr-2" size={18} />
+                International Tours
+              </Button>
+            </motion.div>
+            
+            <motion.div 
+              className="flex justify-center pt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <Button className="bg-pink-primary hover:bg-pink-primary/90 text-white rounded-full px-8 py-3 font-medium shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <Heart className="mr-2" size={18} />
-                View Safe Travel Packages
-              </Button>
               <Button asChild variant="outline" className="rounded-full px-8 py-3 border-pink-primary text-pink-primary hover:bg-pink-primary hover:text-white">
                 <Link to="/customize">
                   <Sparkles className="mr-2" size={18} />
@@ -78,14 +198,66 @@ export default function WomenFocused() {
                 </Link>
               </Button>
             </motion.div>
+            
+
           </motion.div>
         </div>
 
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-10 text-4xl float-element">🌺</div>
-        <div className="absolute top-32 right-16 text-3xl float-element animate-bounce-gentle">💕</div>
-        <div className="absolute bottom-20 left-20 text-2xl float-element">🦋</div>
-        <div className="absolute bottom-32 right-10 text-3xl float-element animate-bounce-gentle">✨</div>
+
+      </section>
+
+      {/* Women Travel Packages */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              {selectedType === 'domestic' ? 'Domestic Women Tours' : 'International Women Tours'}
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              {selectedType === 'domestic' 
+                ? 'Explore India safely with fellow women travelers' 
+                : 'International adventures designed for women\'s safety and comfort'}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPackages.map((pkg, index) => (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index }}
+              >
+                <PackageCard 
+                  package={{
+                    id: pkg.id,
+                    title: pkg.title,
+                    startDate: '20 Feb 2025',
+                    endDate: '25 Feb 2025',
+                    places: pkg.destination.split(' - '),
+                    timeline: [
+                      { day: 1, description: 'Arrival and welcome ceremony' },
+                      { day: 2, description: 'City tour and cultural experiences' },
+                      { day: 3, description: 'Adventure activities and sightseeing' }
+                    ],
+                    price: parseInt(pkg.price.replace(/[^0-9]/g, '')),
+                    availableSeats: 10,
+                    type: 'Women Only' as const,
+                    thumbnail: pkg.image,
+                    shortDescription: `${pkg.duration} women-only travel experience`,
+                    inclusions: pkg.includes || ['Accommodation', 'Meals', 'Transportation', 'Guide'],
+                    exclusions: ['Personal expenses', 'Travel insurance']
+                  }}
+                  showPinkTheme={true}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Why Choose Women-Only Travel */}
@@ -98,7 +270,7 @@ export default function WomenFocused() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              💪 Why Choose Women-Only Travel?
+              Why Choose Women-Only Travel?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Experience the freedom, safety, and empowerment that comes with traveling 
@@ -174,63 +346,7 @@ export default function WomenFocused() {
         </div>
       </section>
 
-      {/* Women-Only Packages */}
-      <section className="py-20 px-4 bg-gradient-to-br from-pink-secondary/20 to-pink-accent/30">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              🌸 Exclusive Women-Only Packages
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Carefully curated experiences designed specifically for women travelers. 
-              Each package includes female guides, women-friendly accommodations, and activities 
-              that celebrate female empowerment.
-            </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {womenPackages.map((pkg, index) => (
-              <motion.div
-                key={pkg.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <PackageCard package={pkg} showPinkTheme={true} />
-              </motion.div>
-            ))}
-          </div>
-
-          {womenPackages.length === 0 && (
-            <motion.div 
-              className="text-center py-16"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="text-6xl mb-4">🌱</div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                More Packages Coming Soon!
-              </h3>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                We're carefully crafting more women-only travel experiences. 
-                In the meantime, let us create a custom package just for you.
-              </p>
-              <Button asChild className="bg-pink-primary hover:bg-pink-primary/90">
-                <Link to="/customize">
-                  <Heart className="mr-2" size={18} />
-                  Request Custom Women's Package
-                </Link>
-              </Button>
-            </motion.div>
-          )}
-        </div>
-      </section>
 
       {/* Safety Features */}
       <section className="py-20 px-4">

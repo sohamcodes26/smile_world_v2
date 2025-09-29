@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Info, Palette, Heart, Mail, Menu, X } from "lucide-react";
+import { Home, Info, Palette, Heart, Mail, Menu, X, Users, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.ico";
@@ -10,6 +10,8 @@ const navigation = [
   { name: "About", href: "/about", icon: Info },
   { name: "Customize", href: "/customize", icon: Palette },
   { name: "Women Travel", href: "/women", icon: Heart },
+  { name: "Group Departure", href: "/group-departure", icon: Users },
+  { name: "Blog", href: "/blog", icon: BookOpen },
   { name: "Contact", href: "/contact", icon: Mail },
 ];
 
@@ -22,7 +24,7 @@ export function Layout({ children, className = "" }: LayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   
-  const isWomenPage = location.pathname === "/women";
+  const isWomenPage = location.pathname.startsWith("/women");
 
   return (
     <div className={`min-h-screen ${isWomenPage ? "pink-theme" : ""} ${className}`}>
