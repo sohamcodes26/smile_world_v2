@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Users, Eye, EyeOff } from "lucide-react";
+import { MapPin, Calendar, Users } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InquiryModal } from "./InquiryModal";
@@ -27,7 +27,6 @@ interface PackageCardProps {
 
 export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCardProps) {
   const [showInquiry, setShowInquiry] = useState(false);
-  const [isContentVisible, setIsContentVisible] = useState(false);
 
   const visiblePlaces = pkg.places.slice(0, 2);
   const hiddenPlacesCount = pkg.places.length - 2;
@@ -40,7 +39,7 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
         className="package-card group"
       >
         {/* Thumbnail */}
-        <div className="relative h-48 mb-4 rounded-2xl overflow-hidden">
+        <div className="relative h-48 mb-3 rounded-2xl overflow-hidden">
           <img
             src={pkg.thumbnail}
             alt={pkg.title}
@@ -62,10 +61,10 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
         </div>
 
         {/* Package Info */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-2">{pkg.title}</h3>
-            <p className="text-muted-foreground text-sm">{pkg.shortDescription}</p>
+            <h3 className="text-lg font-bold text-foreground mb-1">{pkg.title}</h3>
+            <p className="text-muted-foreground text-sm line-clamp-2">{pkg.shortDescription}</p>
           </div>
 
           {/* Dates */}
@@ -92,95 +91,52 @@ export function PackageCard({ package: pkg, showPinkTheme = false }: PackageCard
             <div className="text-lg font-bold text-primary">₹{pkg.price.toLocaleString()}</div>
             <div className="flex items-center space-x-1 text-sm text-muted-foreground">
               <Users size={14} />
-              <span>{pkg.availableSeats} seats left</span>
+              <span>{pkg.availableSeats} seats</span>
             </div>
           </div>
 
-          {/* Blurred Content Section */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-foreground">Full Itinerary & Details</h4>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsContentVisible(!isContentVisible);
-                }}
-                className="flex items-center justify-center px-3 py-1.5 rounded-md text-primary hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors z-10 relative"
-                type="button"
-              >
-                {isContentVisible ? <EyeOff size={16} /> : <Eye size={16} />}
-              </button>
+          {/* Content Section */}
+          <div className="space-y-2">
+            <div>
+              <h4 className="font-medium text-foreground text-sm">Full Itinerary & Details</h4>
             </div>
 
-            <div className={`space-y-3 transition-all duration-300 relative ${
-              !isContentVisible ? "cursor-pointer" : ""
-            }`} onClick={() => !isContentVisible && setShowInquiry(true)}>
+            <div className="space-y-1 transition-all duration-300 relative">
               {/* Timeline */}
-              <div className="space-y-2">
-                <h5 className="text-sm font-medium text-foreground">Day-wise Timeline:</h5>
-                <div className="space-y-1">
-                  {pkg.timeline.slice(0, 3).map((day) => (
-                    <div key={day.day} className="text-xs text-muted-foreground">
-                      Day {day.day}: {day.description}
-                    </div>
-                  ))}
-                  {pkg.timeline.length > 3 && (
-                    <div className="text-xs text-muted-foreground">
-                      ...and {pkg.timeline.length - 3} more days
-                    </div>
-                  )}
+              <div className="space-y-1">
+                <div className="text-xs text-muted-foreground">
+                  Day 1: {pkg.timeline[0]?.description || 'Journey begins'}
+                </div>
+                {/* Hidden content with backdrop blur */}
+                <div className="relative">
+                  <div className="text-xs text-muted-foreground space-y-1 select-none pointer-events-none">
+                    <div>Day 2: Explore local attractions and cultural experiences</div>
+                    <div>Day 3: Adventure activities and scenic tours</div>
+                    <div>Day 4: Cultural immersion and local cuisine</div>
+                    <div>Day 5: Final exploration and departure</div>
+                  </div>
+                  {/* Backdrop blur overlay - only covers Day 2 onwards */}
+                  <div className="absolute inset-0 backdrop-blur-sm rounded-xl pointer-events-none"></div>
                 </div>
               </div>
-
-              {/* All Places */}
-              <div className="space-y-2">
-                <h5 className="text-sm font-medium text-foreground">All Places Covered:</h5>
-                <div className="flex flex-wrap gap-1">
-                  {pkg.places.map((place, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 bg-muted rounded-full text-xs text-muted-foreground"
-                    >
-                      {place}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Inclusions */}
-              <div className="space-y-2">
-                <h5 className="text-sm font-medium text-foreground">Inclusions:</h5>
-                <ul className="text-xs text-muted-foreground space-y-1">
-                  {pkg.inclusions.slice(0, 3).map((item, index) => (
-                    <li key={index}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              {!isContentVisible && (
-                <div className={`absolute inset-0 backdrop-blur-sm rounded-xl pointer-events-none flex items-center justify-center ${
-                  !isContentVisible ? "content-blur" : ""
-                }`}></div>
-              )}
             </div>
-
-            {!isContentVisible && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowInquiry(true);
-                }}
-                className={`w-full px-4 py-2 rounded-md text-sm font-medium text-center cursor-pointer transition-colors z-10 relative ${
-                  showPinkTheme 
-                    ? "bg-pink-primary hover:bg-pink-primary/90 text-white" 
-                    : "bg-primary hover:bg-primary/90 text-primary-foreground"
-                }`}
-                type="button"
-              >
-                Request Full Details
-              </button>
-            )}
           </div>
+
+          {/* Button at very bottom */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowInquiry(true);
+            }}
+            className={`w-full px-4 py-2 rounded-md text-sm font-medium text-center cursor-pointer transition-colors z-10 relative ${
+              showPinkTheme 
+                ? "bg-pink-primary hover:bg-pink-primary/90 text-white" 
+                : "bg-primary hover:bg-primary/90 text-primary-foreground"
+            }`}
+            type="button"
+          >
+            Request Full Details
+          </button>
         </div>
       </motion.div>
 

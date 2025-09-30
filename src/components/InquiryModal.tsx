@@ -63,12 +63,12 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="cloud-card max-w-md w-full max-h-[90vh] overflow-y-auto"
+            className="cloud-card max-w-md w-full max-h-[95vh]"
             onClick={e => e.stopPropagation()}
           >
-            <div className="p-6">
+            <div className="p-4">
               {/* Header */}
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-4">
                 <div>
                   <h2 className={`text-2xl font-bold ${showPinkTheme ? "text-pink-primary" : "text-primary"}`}>
                     Get Full Details
@@ -92,7 +92,7 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name *</Label>
                   <Input
@@ -149,19 +149,6 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
                   </select>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="notes">Special Requests (Optional)</Label>
-                  <Textarea
-                    id="notes"
-                    name="notes"
-                    value={formData.notes}
-                    onChange={handleChange}
-                    placeholder="Any special requirements, dietary preferences, accessibility needs, etc."
-                    className="rounded-xl"
-                    rows={3}
-                  />
-                </div>
-
                 <Button
                   type="submit"
                   disabled={isSubmitting}
@@ -182,7 +169,7 @@ export function InquiryModal({ isOpen, onClose, packageTitle, showPinkTheme = fa
                 </Button>
               </form>
 
-              <div className="mt-6 text-center text-xs text-muted-foreground">
+              <div className="mt-4 text-center text-xs text-muted-foreground">
                 We'll respond within 24 hours with complete package details,
                 availability, and pricing information.
               </div>
