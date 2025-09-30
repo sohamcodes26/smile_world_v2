@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { Heart, Users, MapPin, Award, Shield, Star } from "lucide-react";
+import logo from "@/assets/logo.ico";
 
 export default function About() {
   return (
@@ -60,7 +61,9 @@ export default function About() {
               viewport={{ once: true }}
               className="cloud-card p-8 text-center"
             >
-              <div className="text-8xl mb-6">🌏</div>
+              <div className="mb-6 flex justify-center">
+                <img src={logo} alt="Smiles World Logo" className="w-20 h-20" />
+              </div>
               <h3 className="text-3xl font-bold text-primary mb-4">Our Mission</h3>
               <p className="text-xl text-muted-foreground">
                 To make travel accessible, safe, and joyful for everyone, 
